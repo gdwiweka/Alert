@@ -9,11 +9,13 @@ import controllers.AccountController;
 import controllers.DepartmentController;
 import controllers.EmployeeController;
 import controllers.JobController;
+import controllers.RegionController;
 import daos.GeneralDAO;
 import icontrollers.IAccountController;
 import icontrollers.IDepartmentController;
 import icontrollers.IEmployeeController;
 import icontrollers.IJobController;
+import icontrollers.IRegionController;
 import java.math.BigDecimal;
 import java.util.Date;
 import models.Country;
@@ -35,6 +37,12 @@ public class OHibernate {
     public static void main(String[] args) {
         SessionFactory factory = HibernateUtil.getSessionFactory();
         System.out.println(factory);
+        IRegionController irc = new RegionController(factory);
+//        for (Region region : irc.getAll()) {
+//            System.out.println(region.getName());
+//        }
+        System.out.println(irc.search("An"));
+        
 //        IEmployeeController eco = new EmployeeController(factory);
 //        IDepartmentController edo = new DepartmentController(factory);
 //        GeneralDAO<Employee> edao = new GeneralDAO<>(factory, Employee.class);
